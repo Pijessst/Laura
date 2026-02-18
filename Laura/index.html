@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Tentang Kita 🤍</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body{
+  background:#fdecee;
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.container{
+  width:340px;
+  text-align:center;
+  position:relative;
+}
+
+/* HEART */
+.heart{
+  position:absolute;
+  font-size:18px;
+  animation:float 3s infinite ease-in-out;
+}
+.heart1{top:-30px;left:10px;}
+.heart2{top:-40px;right:10px;animation-delay:1s;}
+.heart3{top:-10px;right:80px;animation-delay:2s;}
+
+@keyframes float{
+  0%{transform:translateY(0);opacity:1;}
+  50%{transform:translateY(-10px);opacity:.8;}
+  100%{transform:translateY(0);opacity:1;}
+}
+
+h1,h2{
+  color:#c0392b;
+  margin-bottom:15px;
+}
+
+button{
+  background:#c0392b;
+  color:white;
+  border:none;
+  padding:10px 25px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:15px;
+  margin:8px;
+}
+button:hover{background:#a93226;}
+
+.content{display:none;}
+
+/* PAGE 1 */
+.card{
+  background:#f8cfd4;
+  width:200px;
+  height:200px;
+  border-radius:50%;
+  margin:0 auto 15px;
+  overflow:hidden;
+}
+.card img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hint{
+  font-size:14px;
+  color:#555;
+}
+
+/* PAGE 2 */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.photo-card{
+  background:white;
+  padding:6px;
+  border-radius:10px;
+  box-shadow:0 5px 10px rgba(0,0,0,.15);
+  animation:pop 1s ease forwards;
+}
+.photo-card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+  border-radius:8px;
+}
+
+@keyframes pop{
+  from{transform:scale(.9);opacity:0;}
+  to{transform:scale(1);opacity:1;}
+}
+
+/* PAGE 3 */
+.music-card{
+  background:white;
+  padding:10px;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,.2);
+}
+.music-card iframe{
+  width:100%;
+  height:180px;
+  border-radius:12px;
+}
+
+.song-title{
+  font-weight:bold;
+  color:#c0392b;
+  margin-top:10px;
+}
+.song-desc{
+  font-size:13px;
+  color:#555;
+  margin:10px 0 15px;
+}
+
+/* PAGE 4 - NOTE */
+.envelope{
+  width:120px;
+  margin:10px auto;
+  cursor:pointer;
+  animation:pulse 1.8s infinite;
+}
+.envelope img{
+  width:100%;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.05);}
+  100%{transform:scale(1);}
+}
+
+.note{
+  display:none;
+  background:white;
+  padding:15px;
+  border-radius:15px;
+  box-shadow:0 6px 15px rgba(0,0,0,.2);
+  font-size:13px;
+  color:#444;
+  text-align:left;
+  animation:fadeUp .8s ease forwards;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(10px);}
+  to{opacity:1;transform:translateY(0);}
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<div class="heart heart1">💗</div>
+<div class="heart heart2">💗</div>
+<div class="heart heart3">💗</div>
+
+<!-- PAGE 1 -->
+<div id="page1">
+  <h1>You’re My Favorite 🤍</h1>
+  <div class="card"><img src="nailong.jpg"></div>
+  <p class="hint">Click the next button!! (≧◡≦) ♡</p>
+  <button onclick="goPage2()">Next →</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="content">
+  <h2>Our Memories :3 🏅</h2>
+  <div class="photo-grid">
+    <div class="photo-card"><img src="Bee1.jpg"></div>
+    <div class="photo-card"><img src="Bee2.jpg"></div>
+    <div class="photo-card"><img src="Bee3.jpg"></div>
+    <div class="photo-card"><img src="Bee4.jpg"></div>
+    <div class="photo-card"><img src="Bee5.jpg"></div>
+    <div class="photo-card"><img src="Bee6.jpg"></div>
+  </div>
+  <button onclick="goPage1()">⬅ Back</button>
+  <button onclick="goPage3()">Next →</button>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="content">
+  <h2>🎵 A Song Just For You</h2>
+  <div class="music-card">
+    <iframe src="https://www.youtube.com/embed/ylZTusR1K_o" allowfullscreen></iframe>
+  </div>
+  <p class="song-title">A Sweet Song</p>
+  <p class="song-desc">
+    “This song reminds me of you. Every time I listen to it,
+    I realize how much I want to be closer to you.”
+  </p>
+  <button onclick="goPage2()">⬅ Back</button>
+  <button onclick="goPage4()">Next →</button>
+</div>
+
+<!-- PAGE 4 -->
+<div id="page4" class="content">
+  <h2>💌 A Letter For You</h2>
+
+  <div class="envelope" onclick="openNote()">
+    <img src="amplop.png">
+  </div>
+
+  <p style="font-size:13px;color:#555;">I wrote a letter for you...</p>
+
+  <div class="note" id="note">
+    Thank you for being a part of my life.
+    Your presence makes everything feel calmer
+    and my days more meaningful.
+    <br><br>
+    When things get hard,
+    you are always the reason I keep going.🤍
+  </div>
+
+  <button onclick="goPage3()">⬅ Back</button>
+</div>
+
+</div>
+
+<script>
+function goPage1(){show(1)}
+function goPage2(){show(2)}
+function goPage3(){show(3)}
+function goPage4(){show(4)}
+
+function show(n){
+  page1.style.display="none";
+  page2.style.display="none";
+  page3.style.display="none";
+  page4.style.display="none";
+  document.getElementById("page"+n).style.display="block";
+}
+
+function openNote(){
+  document.getElementById("note").style.display="block";
+}
+</script>
+
+</body>
+</html>
